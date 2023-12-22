@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.natamus.biggerspongeabsorptionradius.fabric.mixin",
+  "package": "com.natamus.biggerspongeabsorptionradius.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "SpongeBlockMixin"

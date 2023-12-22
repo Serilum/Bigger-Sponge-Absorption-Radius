@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "biggerspongeabsorptionradius",
-  "version": "3.4",
+  "version": "3.5",
 
   "name": "Bigger Sponge Absorption Radius",
   "description": "Each extra sponge block placed next to another increases the water absorption radius.",
@@ -18,7 +18,7 @@
   "environment": "*",
   "entrypoints": { "main": [ "com.natamus.biggerspongeabsorptionradius.ModFabric" ] },
   "mixins": [
-    "biggerspongeabsorptionradius_fabric.mixins.json"
+    "biggerspongeabsorptionradius.mixins.json"
   ],
 
   "depends": {
@@ -26,7 +26,7 @@
     "fabric": "*",
     "minecraft": ">=1.19",
     "java": ">=17",
-    "collective": ">=7.21"
+    "collective": ">=7.26"
   },
 
   "custom": {
