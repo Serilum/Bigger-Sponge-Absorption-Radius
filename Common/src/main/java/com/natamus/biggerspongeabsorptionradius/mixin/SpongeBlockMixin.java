@@ -1,4 +1,4 @@
-package com.natamus.biggerspongeabsorptionradius.fabric.mixin;
+package com.natamus.biggerspongeabsorptionradius.mixin;
 
 import com.google.common.collect.Lists;
 import com.natamus.collective.functions.BlockPosFunctions;
