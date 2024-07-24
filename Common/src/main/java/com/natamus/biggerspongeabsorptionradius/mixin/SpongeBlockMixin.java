@@ -13,14 +13,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.MapColor;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 
-@Mixin(value = SpongeBlock.class, priority = 999)
+@Mixin(value = SpongeBlock.class, priority = 1001)
 public class SpongeBlockMixin extends Block {
 	@Unique private static final List<MapColor> spongematerials = Arrays.asList(MapColor.COLOR_YELLOW);
 
@@ -28,20 +30,16 @@ public class SpongeBlockMixin extends Block {
 		super(p_49795_);
 	}
 
-	/**
-	 * @author Rick South
-	 * @reason Unable to accomplish with a simple injection.
-	 */
-	@Overwrite
-	private boolean removeWaterBreadthFirstSearch(Level level, BlockPos pos) {
-		List<BlockPos> spongepositions = BlockPosFunctions.getBlocksNextToEachOtherMaterial(level, pos, spongematerials);
-		int spongecount = spongepositions.size();
+	@Inject(method = "removeWaterBreadthFirstSearch(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;)Z", at = @At(value = "HEAD"), cancellable = true)
+	private void removeWaterBreadthFirstSearch(Level level, BlockPos blockPos, CallbackInfoReturnable<Boolean> cir) {
+		List<BlockPos> spongePositions = BlockPosFunctions.getBlocksNextToEachOtherMaterial(level, blockPos, spongematerials);
+		int spongeCount = spongePositions.size();
 
-		int absorpdistance = 6 * spongecount; // default 6
-		int maxcount = 64 * spongecount; // default 64
+		int absorbDistance = 6 * spongeCount; // default 6
+		int maxCount = 64 * spongeCount; // default 64
 
 		Queue<Tuple<BlockPos, Integer>> queue = Lists.newLinkedList();
-		queue.add(new Tuple<>(pos, 0));
+		queue.add(new Tuple<>(blockPos, 0));
 		int i = 0;
 
 		while(!queue.isEmpty()) {
@@ -58,14 +56,14 @@ public class SpongeBlockMixin extends Block {
 				if (ifluidstate.is(FluidTags.WATER) || block instanceof SpongeBlock || block instanceof WetSpongeBlock) {
 					if (blockstate.getBlock() instanceof BucketPickup && !((BucketPickup)blockstate.getBlock()).pickupBlock(null, level, blockpos1, blockstate).isEmpty()) {
 						++i;
-						if (j < absorpdistance) {
+						if (j < absorbDistance) {
 							queue.add(new Tuple<>(blockpos1, j + 1));
 						}
 					}
 					else if (block instanceof LiquidBlock) {
 						level.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 3);
 						++i;
-						if (j < absorpdistance) {
+						if (j < absorbDistance) {
 							queue.add(new Tuple<>(blockpos1, j + 1));
 						}
 					}
@@ -74,27 +72,29 @@ public class SpongeBlockMixin extends Block {
 						dropResources(blockstate, level, blockpos1, tileentity);
 						level.setBlock(blockpos1, Blocks.AIR.defaultBlockState(), 3);
 						++i;
-						if (j < absorpdistance) {
+						if (j < absorbDistance) {
 							queue.add(new Tuple<>(blockpos1, j + 1));
 						}
 					}
 				}
 			}
 
-			if (i > maxcount) {
+			if (i > maxCount) {
 				break;
 			}
 		}
 
 		if (i > 0) {
-			for (BlockPos spongepos : spongepositions) {
+			for (BlockPos spongepos : spongePositions) {
 				Block block = level.getBlockState(spongepos).getBlock();
 				if (block instanceof SpongeBlock || block instanceof WetSpongeBlock) {
 					level.setBlockAndUpdate(spongepos, Blocks.WET_SPONGE.defaultBlockState());
 				}
 			}
-			return true;
+
+			cir.setReturnValue(true);
 		}
-		return false;
+
+		cir.setReturnValue(false);
 	}
 }
