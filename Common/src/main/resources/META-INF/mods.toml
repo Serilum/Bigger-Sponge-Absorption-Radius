@@ -6,7 +6,7 @@ logoFile="icon.png"
 
 [[mods]]
 modId="biggerspongeabsorptionradius"
-version="3.6"
+version="3.7"
 displayName="Bigger Sponge Absorption Radius"
 displayURL="https://serilum.com/mod/bigger-sponge-absorption-radius"
 authors="Rick South"
@@ -22,7 +22,7 @@ If you would like to contribute too, check out https://serilum.com/donate. Appre
 [[dependencies.biggerspongeabsorptionradius]]
     modId="collective"
     mandatory=true
-    versionRange="[7.74,)"
+    versionRange="[7.78,)"
     ordering="NONE"
     side="BOTH"
 
