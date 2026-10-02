@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
   "id": "biggerspongeabsorptionradius",
-  "version": "3.7",
+  "version": "3.8",
 
   "name": "Bigger Sponge Absorption Radius",
   "description": "Each extra sponge block placed next to another increases the water absorption radius.",
-  "authors": [ "Rick South" ],
+  "authors": [ "Serilum" ],
   "contact": {
     "homepage": "https://serilum.com/mod/bigger-sponge-absorption-radius",
     "sources": "https://github.com/Serilum/Bigger-Sponge-Absorption-Radius",
     "issues": "https://github.com/Serilum/.issue-tracker/labels/Mod:%20Bigger%20Sponge%20Absorption%20Radius"
   },
 
-  "license": "All Right Reserved",
+  "license": "All Rights Reserved",
   "icon": "icon.png",
 
   "environment": "*",
-  "entrypoints": { "main": [ "com.natamus.biggerspongeabsorptionradius.ModFabric" ] },
+  "entrypoints": { "main": [ "com.serilum.biggerspongeabsorptionradius.ModFabric" ] },
   "mixins": [
     "biggerspongeabsorptionradius.mixins.json"
   ],
@@ -26,7 +26,7 @@
     "fabric-api": "*",
     "minecraft": ">=26.2",
     "java": ">=25",
-    "collective": ">=8.29"
+    "collective": ">=8.40"
   },
 
   "custom": {
@@ -41,15 +41,14 @@
 	  " ",
 	  "Thank you very much to my Membership sponsors for supporting the development of this mod!",
 	  " ",
-	  "If you would like to contribute too, check out https://serilum.com/donate.",
+	  "If you would like to contribute too, check out https://serilum.com/donate",
 	  " ",
 	  "Membership sponsors:",
 	  " Andrean Olgo",
+	  " AnyankaT",
 	  " aternosorg",
 	  " Cherriesaurus",
-	  " Josh",
 	  " Linda Jansen",
-	  " Michelle Smith",
 	  " MWS",
 	  " Tyler Behl"
   ]
