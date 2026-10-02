@@ -1,28 +1,28 @@
 modLoader="javafml"
 loaderVersion="*"
-license="All rights reserved"
+license="All Rights Reserved"
 issueTrackerURL="https://github.com/Serilum/.issue-tracker/labels/Mod:%20Bigger%20Sponge%20Absorption%20Radius"
 iconFile="icon.png"
 
 [[mods]]
 modId="biggerspongeabsorptionradius"
-version="3.7"
+version="3.8"
 displayName="Bigger Sponge Absorption Radius"
 displayURL="https://serilum.com/mod/bigger-sponge-absorption-radius"
-authors="Rick South"
+authors="Serilum"
 description='''Each extra sponge block placed next to another increases the water absorption radius.
 '''
 credits='''Thank you very much to my Membership sponsors for supporting the development of this mod:  
 
 Andrean Olgo, AnyankaT, aternosorg, Cherriesaurus, Linda Jansen, MWS, Tyler Behl   
 
-If you would like to contribute too, check out https://serilum.com/donate. Appreciate it! <3   
+If you would like to contribute too, check out https://serilum.com/donate Appreciate it! <3   
 '''
 
 [[dependencies.biggerspongeabsorptionradius]]
     modId="collective"
     type="required"
-    versionRange="[8.39,)"
+    versionRange="[8.40,)"
     ordering="NONE"
     side="BOTH"
 
