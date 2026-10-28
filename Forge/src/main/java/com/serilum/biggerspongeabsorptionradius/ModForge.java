@@ -1,6 +1,6 @@
-package com.natamus.biggerspongeabsorptionradius;
+package com.serilum.biggerspongeabsorptionradius;
 
-import com.natamus.biggerspongeabsorptionradius.util.Reference;
+import com.serilum.biggerspongeabsorptionradius.util.Reference;
 import com.natamus.collective.check.RegisterMod;
 import com.natamus.collective.check.ShouldLoadCheck;
 import net.minecraftforge.eventbus.api.bus.BusGroup;

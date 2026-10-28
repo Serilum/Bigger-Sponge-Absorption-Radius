@@ -1,4 +1,4 @@
-package com.natamus.biggerspongeabsorptionradius;
+package com.serilum.biggerspongeabsorptionradius;
 
 
 public class ModCommon {
